@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 basics</title>
+    <style>
+      .box {
+        background-color: blue;
+        height: 200px;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Hello Vue3 -->
+      <!-- On appelle dans un second temps directement la variable déclarée dans data. -->
+      {{greeting}}
+
+      <!-- En liant la variable ci-dessus à l'input ci-dessous on réalise un 2-way databinding -->
+      <input type="text" v-model="greeting" />
+
+      <div v-if="isVisible" class="box"></div>
+      <!-- On peut aussi utliser v-show qui sera plus performant que v-if cas de changement régulier -->
+      <!-- Revient  à faire un display none-->
+      <!-- <div v-show="isVisible" class="box"></div> -->
+    </div>
+
+    <!-- On appelle VueJS en cdn pour le moment -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      // Creation d'une vue
+      let app = Vue.createApp({
+        data: function () {
+          return {
+            greeting: "Helloc Vue 3 !!!",
+            isVisible: false,
+          };
+        },
+      });
+
+      // Lie la vue avec la div protant l'id app.
+      app.mount("#app");
+    </script>
+  </body>
+</html>
